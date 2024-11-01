@@ -7,7 +7,7 @@
   tasks:
     - name: Deploy Infrastructure
       ansible.builtin.include_role:
-        name: lab.aws_deployment.infrastructure
+        name: infrastructure
       tags:
         - always
 
@@ -29,7 +29,7 @@
   tasks:
     - name: Configure RHEL subscription manager
       ansible.builtin.include_role:
-        name: lab.aws_deployment.infrastructure
+        name: infrastructure
         tasks_from: vms/subscription_manager
       tags:
         - controller
@@ -38,7 +38,7 @@
 
     - name: Manage RHEL packages
       ansible.builtin.include_role:
-        name: lab.aws_deployment.infrastructure
+        name: infrastructure
         tasks_from: vms/dnf
       tags:
         - controller
@@ -59,7 +59,7 @@
   tasks:
     - name: Run AAP role
       ansible.builtin.include_role:
-        name: lab.aws_deployment.aap
+        name: aap
       tags:
         - controller
         - hub
