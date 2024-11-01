@@ -1,4 +1,4 @@
-# Ansible Collection - lab.aws_deployment
+# Ansible Collection - aws_ansible_deployment
 
 This is a collection that will deploy Ansible on AWS.  While this collection will work with any Ansible deployment on AWS, this is intended to be a starting point for customers that purchase Ansible Automation Platform subscriptions from the AWS marketplace.  Take this collection and enhance/improve/update based on the resources that you need for your AAP deployment.
 
@@ -66,8 +66,8 @@ This collection includes the following roles.  Each role has default variables a
 
 | Role                                | Description                                                                         |
 | ----------------------------------- | ----------------------------------------------------------------------------------- |
-| `infrastructure` | Responsible for deploying the AWS infrastructure.                                   |
-| `aap`            | Responsible for configuring and installing AAP once the infrastructure is deployed. |
+| `aws_ansible_deployment.infrastructure` | Responsible for deploying the AWS infrastructure.                                   |
+| `aws_ansible_deployment.aap`            | Responsible for configuring and installing AAP once the infrastructure is deployed. |
 
 ### Variables
 
@@ -170,7 +170,7 @@ This section will walk through deploying the AWS infrastructure and Ansible Auto
 Assuming that all variables are configured properly and your AWS account has permissions to deploy the resources defined in this collection, then running the playbook should be a single task.
 
 ```bash
-ansible-navigator run deploy_aap \
+ansible-navigator run aws_ansible_deployment.deploy_aap \
 -i env/inventory \
 --pae false \
 --mode stdout \
@@ -191,7 +191,7 @@ ansible-navigator run deploy_aap \
 The `playbooks/destroy_aap.yml` playbook will remove RHEL subscription entitlements and deprovision the infrastructure that has been associated with a deployment id.  This will permanently remove all data, so only run this playbook if you are sure that you want to delete all traces of the deployment.
 
 ```bash
-ansible-navigator run destroy_aap \
+ansible-navigator run aws_ansible_deployment.destroy_aap \
 -i env/inventory \
 --pae false \
 --mode stdout \
