@@ -2,20 +2,20 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  become: false
+  become: true
 
   tasks: 
     - name: start an instance with a primary and secondary network interfaces
       amazon.aws.ec2_instance:
+        name: "node-1"
+        key_name: "aap.pem"
         vpc_subnet_id: subnet-06fb85a5fd9aeb398
         instance_type: t2.micro
         image_id: ami-002acc74c401fa86b
         region: us-east-2
+        security_group: sg-020fd8404a41d6d01
         network_interfaces:
           - assign_public_ip: true
-            groups:
-              - sg-020fd8404a41d6d01
             subnet_id: subnet-06fb85a5fd9aeb398
-        state: present
         tags:
           foo: bar
