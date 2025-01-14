@@ -8,7 +8,7 @@
     - name: start an instance with a primary and secondary network interfaces
       amazon.aws.ec2_instance:
         name: "node-1"
-        key_name: "aap.pem"
+        key_name: "aap"
         vpc_subnet_id: subnet-06fb85a5fd9aeb398
         instance_type: t2.micro
         image_id: ami-002acc74c401fa86b
