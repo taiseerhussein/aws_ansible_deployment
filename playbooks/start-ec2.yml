@@ -7,7 +7,7 @@
   tasks: 
     - name: start an instance with a primary and secondary network interfaces
       amazon.aws.ec2_instance:
-        name: "{{ instance-name }}"
+        name: "{{ instance_name }}"
         key_name: "aap"
         vpc_subnet_id: "{{ vpc_subnet_id }}"
         instance_type: t2.micro
