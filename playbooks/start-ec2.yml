@@ -7,11 +7,11 @@
   tasks: 
     - name: start an instance with a primary and secondary network interfaces
       amazon.aws.ec2_instance:
-        name: "node-1"
+        name: {{ instance-name }}
         key_name: "aap"
-        vpc_subnet_id: subnet-06fb85a5fd9aeb398
+        vpc_subnet_id: {{ vpc_subnet_id }}
         instance_type: t2.micro
-        image_id: ami-002acc74c401fa86b
+        image_id: {{ image_id }}
         region: us-east-2
         security_group: sg-020fd8404a41d6d01
         network_interfaces:
